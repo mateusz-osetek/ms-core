@@ -30,7 +30,7 @@ services:
             - MONGO_INITDB_ROOT_PASSWORD=mongo_passwd
         image: mongo
         ports:
-            - 27017:27017
+            - 27018:27017
         volumes:
             - .docker/database:/data/db
         restart: on-failure

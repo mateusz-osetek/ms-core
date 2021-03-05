@@ -1,0 +1,9 @@
+get_status:
+    path: /status
+    controller: App\Core\Infrastructure\Controller\StatusController::getStatus
+    methods: ['GET']
+
+register:
+    path: /register
+    controller: App\Core\Infrastructure\Controller\UserAuthorizationController::register
+    methods: ['POST']
