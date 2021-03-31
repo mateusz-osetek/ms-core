@@ -6,8 +6,9 @@ namespace App\Core\Domain\Model;
 
 use App\Core\Domain\ValueObject\Foundation\DateTime;
 use App\Core\Domain\ValueObject\Foundation\Identifier;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements Entity
+class User implements Entity, UserInterface
 {
     private string $id;
     private Identifier $uuid;
@@ -65,5 +66,19 @@ class User implements Entity
         }
 
         return false;
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function eraseCredentials(): void
+    {
     }
 }

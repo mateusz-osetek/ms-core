@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Core\Application\Dto;
 
 use App\Core\Domain\Model\User;
+use App\Core\Domain\ValueObject\Foundation\DateTime;
+use App\Core\Domain\ValueObject\Foundation\Identifier;
 
 class UserDto implements Dto
 {
     use DtoTrait;
 
-    private string $uuid;
+    private ?string $uuid;
     private string $username;
     private string $email;
     private string $password;
@@ -31,10 +33,11 @@ class UserDto implements Dto
     public static function fromArray(array $array): self
     {
         $dto = new static();
-        $dto->uuid = $array['uuid'];
+        $dto->uuid = Identifier::random()->toString();
         $dto->username = $array['username'];
         $dto->email = $array['email'];
         $dto->password = $array['password'];
+        $dto->createdAt = time();
 
         return $dto;
     }

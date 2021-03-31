@@ -1,9 +1,14 @@
 get_status:
-    path: /status
+    path: /api/status
     controller: App\Core\Infrastructure\Controller\StatusController::getStatus
     methods: ['GET']
 
-register:
+user_register:
     path: /register
     controller: App\Core\Infrastructure\Controller\UserAuthorizationController::register
     methods: ['POST']
+
+user_check:
+    path: /check
+    controller: App\Core\Infrastructure\Controller\UserAuthorizationController::getUserToken
+    methods: [ 'GET' ]
