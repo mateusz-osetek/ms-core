@@ -64,9 +64,6 @@ class UserAuthorizationController extends ApiController
             DateTime::fromTimestamp($userDto->getCreatedAt())
         );
 
-        file_put_contents('dupsko.log', var_export($this->jwtTokenManager->create($user), true));
-        file_put_contents('dupsko.log', var_export($this->jwtTokenManager, true), FILE_APPEND);
-
         return JsonResponse::create([
             'token' => $this->jwtTokenManager->create($user),
         ]);
